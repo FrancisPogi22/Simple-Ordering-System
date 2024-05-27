@@ -28,6 +28,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -41,7 +42,6 @@ h1 {
 h2 {
   font-size: 60px;
   font-weight: 800;
-  margin-bottom: 50px;
   line-height: 1.4em;
 }
 
@@ -99,7 +99,7 @@ body {
   justify-content: center;
 }
 
-button {
+.btn-primary {
   border: none;
   font-size: 14px;
   cursor: pointer;
@@ -108,11 +108,27 @@ button {
   font-family: "Montserrat", sans-serif;
   border-radius: 10px;
   padding: 14px 48px;
-}
-
-.btn-primary {
   color: var(--global-color-white);
   background: var(--global-color-primary);
+}
+
+.modal-header {
+  border: none;
+}
+
+.btn-secondary {
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 14px 48px;
+  text-decoration: underline !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+.modal-footer {
+  gap: 10px;
 }
 
 .wrapper {

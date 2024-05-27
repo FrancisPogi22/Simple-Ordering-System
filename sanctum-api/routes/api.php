@@ -14,3 +14,7 @@ Route::post('register', [AuthenticationController::class, 'register']);
 Route::post('login', [AuthenticationController::class, 'login']);
 
 Route::get('products', [ProductController::class, 'products']);
+Route::get('showProduct/{id}', [ProductController::class, 'showProduct']);
+Route::post('addProduct', [ProductController::class, 'addProduct']);
+Route::put('editProduct/{id}', [ProductController::class, 'editProduct']);
+Route::delete('removeProduct/{id}', [ProductController::class, 'removeProduct']);

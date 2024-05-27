@@ -4,7 +4,7 @@
       <div class="header-con">
         <ul class="navbar">
           <router-link to="/dashboard">Dashboard</router-link>
-          <router-link v-if="account_type == 1" to="/dashboard">My Store</router-link>
+          <router-link v-if="account_type == 1" to="/myStore">My Store</router-link>
           <router-link to="/logout">Logout</router-link>
         </ul>
       </div>
