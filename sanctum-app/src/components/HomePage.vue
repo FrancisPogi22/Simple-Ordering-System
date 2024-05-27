@@ -1,15 +1,5 @@
 <template>
-  <section id="header">
-    <div class="wrapper">
-      <div class="header-con">
-        <ul class="navbar">
-          <router-link to="/dashboard">Dashboard</router-link>
-          <router-link v-if="account_type == 1" to="/myStore">My Store</router-link>
-          <router-link to="/logout">Logout</router-link>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <HeaderPage />
   <section id="dashboard">
     <div class="wrapper">
       <div class="dashboard-con">
@@ -29,25 +19,36 @@
               <p>₱ {{ product.quantity }}</p>
             </div>
             <div class="product-button-con">
-              <button class="btn-primary">View more</button>
+              <button class="btn-primary" @click="openPurchaseModal(product)">Purchase</button>
+              <button class="btn-secondary">Add to cart</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <PurchaseOrder :visible="showPurchaseModal" :product="selectedProduct" />
 </template>
 
 <script>
+import HeaderPage from "./partials/HeaderPage.vue";
+import PurchaseOrder from "./modals/PurchaseOrder.vue";
 export default {
   data() {
     return {
       account_type: 0,
+      showOrderModal: false,
+      showPurchaseModal: false,
+      selectedProduct: null,
     };
   },
   mounted() {
     this.account_type = localStorage.getItem("account_type");
     this.fetchProducts();
+  },
+  components: {
+    HeaderPage,
+    PurchaseOrder,
   },
   methods: {
     fetchProducts() {
@@ -58,6 +59,15 @@ export default {
         .catch((error) => {
           console.error("Error fetching products:", error);
         });
+    },
+    openPurchaseModal(product) {
+      this.selectedProduct = product;
+      this.showOrderModal = true;
+      this.showPurchaseModal = true;
+    },
+    closePurchaseModal() {
+      this.showPurchaseModal = false;
+      this.showOrderModal = false;
     },
   },
   computed: {

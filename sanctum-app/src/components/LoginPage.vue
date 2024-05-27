@@ -1,13 +1,5 @@
 <template>
-  <section id="header">
-    <div class="wrapper">
-      <div class="header-con">
-        <ul class="navbar">
-          <router-link to="/register">Register</router-link>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <HeaderPage />
   <section id="login">
     <div class="wrapper">
       <div class="login-container">
@@ -53,6 +45,7 @@
 </template>
   
 <script>
+import HeaderPage from "./partials/HeaderPage.vue";
 import axios from "axios";
 export default {
   data() {
@@ -61,6 +54,9 @@ export default {
       password: "",
       errors: null,
     };
+  },
+  components: {
+    HeaderPage,
   },
   methods: {
     async loginUser() {

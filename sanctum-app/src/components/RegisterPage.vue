@@ -1,13 +1,5 @@
 <template>
-  <section id="header">
-    <div class="wrapper">
-      <div class="header-con">
-        <ul class="navbar">
-          <router-link to="/">Login</router-link>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <HeaderPage />
   <section id="register">
     <div class="wrapper">
       <div class="register-container">
@@ -125,6 +117,7 @@
   
 <script>
 import axios from "axios";
+import HeaderPage from "./partials/HeaderPage.vue";
 export default {
   data() {
     return {
@@ -137,6 +130,9 @@ export default {
       confirm: "",
       errors: {},
     };
+  },
+  components: {
+    HeaderPage,
   },
   methods: {
     async registerUser() {

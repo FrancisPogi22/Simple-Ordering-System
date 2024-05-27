@@ -21,7 +21,23 @@ class ProductController extends Controller
 
     public function addProduct(Request $request)
     {
-        return response(['Add Product'], 201);
+        $request->validate(
+            [
+                'user_id' => 'required',
+                'product_name' => 'required',
+                'product_description' => 'required',
+                'quantity' => 'required',
+            ]
+        );
+
+        Product::create([
+            'user_id' => $request->user_id,
+            'product_name' => $request->product_name,
+            'product_description' => $request->product_description,
+            'quantity' => $request->quantity
+        ]);
+
+        return response(['message' => 'Product Added Successfully'], 201);
     }
 
     public function editProduct(Request $request)

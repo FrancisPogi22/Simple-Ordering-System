@@ -48,15 +48,15 @@
     </div>
   </div>
 </template>
-
+  
 <script>
 import axios from "axios";
 export default {
-  name: "AddProduct",
+  name: "PurchaseOrder",
   data() {
     return {
       openClose: this.visible,
-      productName: "",
+      productName: this.product.productName || "",
       productDescription: "",
       productQuantity: "",
       errors: null,
@@ -64,6 +64,7 @@ export default {
   },
   props: {
     visible: Boolean,
+    product: Object,
   },
   methods: {
     OpenCloseModal() {
@@ -97,6 +98,12 @@ export default {
     visible: {
       handler(newVal) {
         this.openClose = newVal;
+      },
+    },
+    product: {
+      handler(product) {
+        this.productName = product.productName;
+        this.productDescription = product.productDescription;
       },
     },
   },

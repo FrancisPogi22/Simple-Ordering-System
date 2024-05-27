@@ -1,17 +1,5 @@
 <template>
-  <section id="header">
-    <div class="wrapper">
-      <div class="header-con">
-        <ul class="navbar">
-          <router-link to="/dashboard">Dashboard</router-link>
-          <router-link v-if="account_type == 1" to="/myStore"
-            >My Store</router-link
-          >
-          <router-link to="/logout">Logout</router-link>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <HeaderPage />
   <section id="store">
     <div class="wrapper">
       <div class="store-container">
@@ -23,12 +11,13 @@
         </div>
       </div>
     </div>
-    <AddProduct :visible="showAddProduct"  @update:visible="toggleAddProduct"/>
+    <AddProduct :visible="showAddProduct" @update:visible="toggleAddProduct" />
   </section>
 </template>
 
 <script>
 import AddProduct from "./modals/AddProduct.vue";
+import HeaderPage from "./partials/HeaderPage.vue";
 export default {
   data() {
     return {
@@ -38,6 +27,7 @@ export default {
   },
   components: {
     AddProduct,
+    HeaderPage,
   },
   mounted() {
     this.account_type = localStorage.getItem("account_type");
