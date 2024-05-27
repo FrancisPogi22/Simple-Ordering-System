@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginPage from '../components/LoginPage.vue'
 import RegisterPage from '../components/RegisterPage.vue'
 import HomePage from '../components/HomePage.vue'
+import StorePage from '../components/StorePage.vue'
 
 const routes = [
   {
@@ -16,6 +17,16 @@ const routes = [
   },
   {
     path: '/dashboard', component: HomePage, name: 'home',
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('token')) {
+        next()
+      } else {
+        next('/')
+      }
+    }
+  },
+  {
+    path: '/myStore', component: StorePage, name: 'myStore',
     beforeEnter: (to, from, next) => {
       if (localStorage.getItem('token')) {
         next()
