@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+Route::apiResource('products', ProductController::class);
+
 class ProductController extends Controller
 {
     public function products()
@@ -27,6 +29,7 @@ class ProductController extends Controller
                 'product_name' => 'required',
                 'product_description' => 'required',
                 'quantity' => 'required',
+                'price' => 'required',
             ]
         );
 
@@ -34,7 +37,8 @@ class ProductController extends Controller
             'user_id' => $request->user_id,
             'product_name' => $request->product_name,
             'product_description' => $request->product_description,
-            'quantity' => $request->quantity
+            'quantity' => $request->quantity,
+            'price' => $request->price
         ]);
 
         return response(['message' => 'Product Added Successfully'], 201);
