@@ -108,8 +108,13 @@ body {
   font-family: "Montserrat", sans-serif;
   border-radius: 10px;
   padding: 14px 48px;
+  transition: 0.2s;
   color: var(--global-color-white);
   background: var(--global-color-primary);
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
 }
 
 .modal-header {
