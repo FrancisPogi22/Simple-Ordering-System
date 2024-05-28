@@ -104,6 +104,6 @@ export default {
   border-radius: 10px;
   padding: 20px;
   background: var(--global-color-white);
-  box-shadow: var(--global-color-shadow);
+  box-shadow: var(--global-shadow);
 }
 </style>
