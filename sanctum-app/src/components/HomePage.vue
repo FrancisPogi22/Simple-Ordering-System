@@ -19,8 +19,9 @@
               <p>₱ {{ product.quantity }}</p>
             </div>
             <div class="product-button-con">
-              <button class="btn-primary" @click="openPurchaseModal(product)">Purchase</button>
-              <button class="btn-secondary">Add to cart</button>
+              <!-- <button class="btn-primary" @click="openPurchaseModal(product)">Purchase</button> -->
+              <button class="btn-primary">Edit</button>
+              <button class="btn-primary">Delete</button>
             </div>
           </div>
         </div>
@@ -60,15 +61,15 @@ export default {
           console.error("Error fetching products:", error);
         });
     },
-    openPurchaseModal(product) {
-      this.selectedProduct = product;
-      this.showOrderModal = true;
-      this.showPurchaseModal = true;
-    },
-    closePurchaseModal() {
-      this.showPurchaseModal = false;
-      this.showOrderModal = false;
-    },
+    // openPurchaseModal(product) {
+    //   this.selectedProduct = product;
+    //   this.showOrderModal = true;
+    //   this.showPurchaseModal = true;
+    // },
+    // closePurchaseModal() {
+    //   this.showPurchaseModal = false;
+    //   this.showOrderModal = false;
+    // },
   },
   computed: {
     products() {
@@ -142,12 +143,20 @@ export default {
   opacity: 0;
   height: 100%;
   width: 100%;
+  flex-direction: column;
+  gap: 20px;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+#dashboard .product-button-con button{
+ max-width: 150px;
+ width: 100%;
+}
+
 
 #dashboard .product-img-con img {
   width: 100%;

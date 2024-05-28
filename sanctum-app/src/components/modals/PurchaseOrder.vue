@@ -56,7 +56,6 @@ export default {
   data() {
     return {
       openClose: this.visible,
-      productName: this.product.productName || "",
       productDescription: "",
       productQuantity: "",
       errors: null,
