@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('product_description');
             $table->decimal('price', 10, 2);
             $table->integer('quantity');
+            $table->decimal('price',8,2);
         });
     }
 
