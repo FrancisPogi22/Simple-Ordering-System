@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-Route::apiResource('products', ProductController::class);
-
 class ProductController extends Controller
 {
     public function products()
