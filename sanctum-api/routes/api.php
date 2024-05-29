@@ -19,6 +19,8 @@ Route::post('login', [AuthenticationController::class, 'login']);
 Route::get('products', [ProductController::class, 'products']);
 Route::get('showProduct/{id}', [ProductController::class, 'showProduct']);
 Route::post('addProduct', [ProductController::class, 'addProduct']);
+Route::get('filter/low', [ProductController::class, 'filterLowPrice']);
+Route::get('filter/high', [ProductController::class, 'filterHighPrice']);
 Route::put('editProduct/{id}', [ProductController::class, 'editProduct']);
 Route::delete('removeProduct/{id}', [ProductController::class, 'removeProduct']);
 

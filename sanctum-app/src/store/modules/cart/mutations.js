@@ -5,7 +5,6 @@ export const store = new Vuex.Store({
         async updatePosts(state, posts) {
             await axios.get(state.apiUrl + '/posts')
                 .then(response => {
-                    // console.log("response: ", response.data);
                     posts = response.data;
                 })
                 .catch(error => {   

@@ -9,6 +9,9 @@
           <router-link v-if="account_type == 1" to="/myStore"
             >My Store</router-link
           >
+          <router-link v-if="account_type == 1" to="/myOrder"
+            >Accounts</router-link
+          >
           <router-link v-if="account_type == 2" to="/myCart"
             >Cart</router-link
           >
