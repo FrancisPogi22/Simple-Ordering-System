@@ -54,22 +54,20 @@ export default {
     this.fetchProducts();
   },
   methods: {
-    fetchProducts() {
-      this.$store.getters.getProducts
-        .then((products) => {
-          this.products = products;
-        })
-        .catch((error) => {
-          console.error("Error fetching products:", error);
-        });
+    async fetchProducts() {
+      await this.$store.dispatch("fetchProducts");
     },
     toggleAddProduct() {
       this.showAddProduct = !this.showAddProduct;
+
+      if (!this.showAddProduct) {
+        this.$store.dispatch("fetchProducts");
+      }
     },
   },
   computed: {
     products() {
-      return this.$store.state.products;
+      return this.$store.getters.getProducts;
     },
   },
 };
@@ -95,7 +93,7 @@ export default {
   display: flex;
   margin-top: 50px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 50px;
 }
 
 #store .store-container .product-widget {
@@ -156,11 +154,10 @@ export default {
   justify-content: center;
 }
 
-#store .product-button-con button{
- max-width: 150px;
- width: 100%;
+#store .product-button-con button {
+  max-width: 150px;
+  width: 100%;
 }
-
 
 #store .product-img-con img {
   width: 100%;

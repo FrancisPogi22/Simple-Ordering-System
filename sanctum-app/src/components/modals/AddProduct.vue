@@ -39,10 +39,22 @@
               required
             />
           </div>
+          <div class="field-con">
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              v-model="price"
+              placeholder="Product Price"
+              required
+            />
+          </div>
         </div>
         <div class="modal-footer">
-          <button class="btn-secondary" @click="OpenCloseModal()">Close</button>
-          <button type="button" class="btn-primary">Save changes</button>
+          <button class="btn-secondary" @click="CloseFormModal()">Close</button>
+          <button type="button" class="btn-primary" @click="AddNewProuct()">
+            Add Product
+          </button>
         </div>
       </div>
     </div>
@@ -59,6 +71,7 @@ export default {
       productName: "",
       productDescription: "",
       productQuantity: "",
+      price: "",
       errors: null,
     };
   },
@@ -66,12 +79,12 @@ export default {
     visible: Boolean,
   },
   methods: {
-    OpenCloseModal() {
+    CloseFormModal() {
       this.openClose = !this.openClose;
       this.$emit("update:visible", false);
       this.$emit("modal-closed");
     },
-    async SaveNewPost() {
+    async AddNewProuct() {
       try {
         const response = await axios.post(
           this.$store.state.apiUrl + "/addProduct",
@@ -79,13 +92,19 @@ export default {
             productName: this.productName,
             productDescription: this.productDescription,
             productQuantity: this.productQuantity,
+            price: this.price,
             user_id: localStorage.getItem("user_id"),
           }
         );
         if (response.status === 201) {
           this.openClose = !this.openClose;
+          alert("Product Successfully Added.");
           this.$emit("update:visible", false);
           this.$emit("modal-closed");
+          this.productName = "";
+          this.productDescription = "";
+          this.productQuantity = "";
+          this.price = "";
         }
       } catch (error) {
         alert(error.response.data.message);

@@ -24,17 +24,19 @@ class ProductController extends Controller
         $request->validate(
             [
                 'user_id' => 'required',
-                'product_name' => 'required',
-                'product_description' => 'required',
-                'quantity' => 'required',
+                'productName' => 'required',
+                'productDescription' => 'required',
+                'productQuantity' => 'required',
+                'price' => 'required',
             ]
         );
 
         Product::create([
             'user_id' => $request->user_id,
-            'product_name' => $request->product_name,
-            'product_description' => $request->product_description,
-            'quantity' => $request->quantity
+            'product_name' => $request->productName,
+            'product_description' => $request->productDescription,
+            'quantity' => $request->productQuantity,
+            'price' => $request->price
         ]);
 
         return response(['message' => 'Product Added Successfully'], 201);
@@ -48,5 +50,19 @@ class ProductController extends Controller
     public function removeProduct(Request $request)
     {
         return response(['Remove Product'], 201);
+    }
+
+    public function filterLowPrice()
+    {
+        $products = Product::orderBy('price', 'asc')->get();
+        
+        return response()->json($products,200);
+    }
+
+    public function filterHighPrice()
+    {
+        $products = Product::orderBy('price', 'desc')->get();
+        
+        return response()->json($products,200);
     }
 }

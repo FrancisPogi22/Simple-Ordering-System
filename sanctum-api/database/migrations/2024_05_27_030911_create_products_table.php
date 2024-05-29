@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('product_name');
             $table->string('product_description');
+            $table->decimal('price', 10, 2);
             $table->integer('quantity');
         });
     }
