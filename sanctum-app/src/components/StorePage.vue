@@ -108,7 +108,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #store .wrapper {
   max-width: 1440px;
 }
@@ -119,6 +119,8 @@ export default {
 
 #store .header-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
@@ -170,8 +172,10 @@ export default {
 }
 
 #store .product-img-con {
-  width: 250px;
-  height: 200px;
+  max-width: 250px;
+  max-height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 #store .product-button-con {
@@ -198,5 +202,28 @@ export default {
   width: 100%;
   object-fit: cover;
   height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  #store .product-list-con {
+    justify-content: center;
+  }
+
+  #store .btn-primary,
+  #store .btn-secondary{
+    padding: 14px 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  #store .product-list-con {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1024px) {
+  #store .product-list-con {
+    justify-content: center;
+  }
 }
 </style>

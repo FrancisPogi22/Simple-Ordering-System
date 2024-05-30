@@ -107,7 +107,9 @@
               />
             </div>
             <div class="modal-footer">
-              <button class="btn-secondary" @click="CloseFormModal()">Close</button>
+              <button class="btn-secondary" @click="CloseFormModal()">
+                Close
+              </button>
               <button type="submit" class="btn-primary">Register</button>
             </div>
           </form>

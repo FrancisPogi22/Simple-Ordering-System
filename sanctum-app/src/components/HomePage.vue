@@ -268,7 +268,8 @@ export default {
 }
 
 #dashboard .filter-row input {
-  width: 15px;
+  max-width: 15px;
+  width: 100%;
   cursor: pointer;
   height: 15px;
 }
@@ -309,5 +310,62 @@ export default {
   width: 100%;
   object-fit: cover;
   height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  #dashboard .product-con {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  #dashboard .filter-row input {
+    max-width: 12px;
+  }
+
+  #dashboard .filter-con:before {
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+  }
+
+  #dashboard .filter-con {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+  }
+
+  #dashboard .filter-con h4 {
+    width: 100%;
+  }
+
+  #dashboard .product-list-con {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  #dashboard .product-con {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  #dashboard .filter-con {
+    padding: 0;
+    margin: 0;
+    max-width: 200px;
+    width: 100%;
+  }
+
+  #dashboard .product-con {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  #dashboard .product-list-con {
+    justify-content: center;
+  }
 }
 </style>
