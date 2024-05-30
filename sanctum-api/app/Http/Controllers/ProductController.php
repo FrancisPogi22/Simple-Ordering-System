@@ -69,9 +69,12 @@ class ProductController extends Controller
         return response()->json(['message' => 'Successfully Updated'], 200);
     }
 
-    public function removeProduct(Request $request)
+    public function removeProduct($id)
     {
-        return response(['Remove Product'], 201);
+        $product = Product::find($id);
+        $product->delete();
+
+        return response()->json(['Successfully Removed Product'], 200);
     }
 
     public function filterLowPrice()
