@@ -10,35 +10,40 @@
               ADD USER
             </button>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>User Name</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Account Type</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="user in users" :key="user.id">
-                <td>{{ user.user_name }}</td>
-                <td>{{ user.full_name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.address }}</td>
-                <td>{{ user.account_type == 1 ? "Owner" : "Customer" }}</td>
-                <td>
-                  <button @click="toggleEditUser(user.id)" class="btn-edit">
-                    Edit
-                  </button>
-                  <button @click="toggleDeleteUser(user.id)" class="btn-delete">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive-lg">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Account Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="user in users" :key="user.id">
+                  <td>{{ user.user_name }}</td>
+                  <td>{{ user.full_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.address }}</td>
+                  <td>{{ user.account_type == 1 ? "Owner" : "Customer" }}</td>
+                  <td>
+                    <button @click="toggleEditUser(user.id)" class="btn-edit">
+                      Edit
+                    </button>
+                    <button
+                      @click="toggleDeleteUser(user.id)"
+                      class="btn-delete"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <AddUser
@@ -118,7 +123,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #userAccount .wrapper {
   max-width: 1440px;
 }
@@ -127,23 +132,16 @@ export default {
   padding: 100px 0;
 }
 
-.header-container {
+#userAccount .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-bottom: 50px;
 }
 
-.btn-secondary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-edit {
+#userAccount .btn-edit {
   background-color: #facc15;
   color: #fff;
   border: none;
@@ -156,12 +154,12 @@ export default {
   transition: 0.2s;
 }
 
-.btn-edit:hover,
-.btn-delete:hover {
+#userAccount .btn-edit:hover,
+#userAccount .btn-delete:hover {
   transform: scale(1.02);
 }
 
-.btn-delete {
+#userAccount .btn-delete {
   background-color: #ef4444;
   color: #fff;
   border: none;
@@ -174,24 +172,31 @@ export default {
   cursor: pointer;
 }
 
-table {
+#userAccount table {
   width: 100%;
   border-collapse: collapse;
 }
 
-table th,
-table td {
+#userAccount table th,
+#userAccount table td {
   padding: 8px;
   border: 1px solid #ddd;
 }
 
-table td:last-of-type {
+#userAccount table td:last-of-type {
   display: flex;
   gap: 10px;
 }
 
-table th {
+#userAccount table th {
   background-color: var(--global-color-secondary);
   color: var(--global-color-white);
+}
+
+@media screen and (max-width: 767px) {
+  #userAccount .btn-primary,
+  #userAccount .btn-secondary {
+    padding: 14px 30px;
+  }
 }
 </style>

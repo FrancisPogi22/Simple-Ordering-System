@@ -8,6 +8,7 @@
   text-decoration: none !important;
   list-style: none !important;
   scroll-behavior: smooth;
+  transition: 0.2s all;
 }
 
 :root {
@@ -101,7 +102,6 @@ body {
 
 .btn-primary {
   border: none;
-  font-size: 14px;
   cursor: pointer;
   box-shadow: var(--global-shadow);
   font-weight: 600;
@@ -160,9 +160,16 @@ body {
   justify-content: end;
 }
 
-#header .header-con .navbar {
+#header .header-con .navbar,
+#mobile-nav .navbar {
   padding: 0;
   margin: 0;
+}
+
+#mobile-nav .navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 #header .header-con a {
@@ -174,6 +181,137 @@ body {
   color: var(--global-color-white);
 }
 
+#mobile-nav .navbar a {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  color: var(--global-color-white);
+}
+
 #header .header-con a:hover {
   color: #c7d2fe;
+}
+
+#mobile-btn {
+  color: var(--global-color-white);
+}
+
+#mobile-nav .mobile-nav-con {
+  padding: 10px 0;
+}
+
+#mobile-nav .navbar a {
+  width: 100%;
+}
+
+#mobile-nav {
+  width: 100%;
+  display: none;
+  top: 55px;
+  left: 0;
+  z-index: 9;
+  position: fixed;
+  box-shadow: var(--global-shadow);
+  background: var(--global-color-primary);
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  p,
+  label {
+    font-size: 12px;
+  }
+
+  .btn-primary,
+  .field-con input,
+  .field-con select,
+  .field-con input::placeholder,
+  .field-con select::placeholder,
+  #header .header-con a {
+    font-size: 12px;
+  }
+
+  .field-con input,
+  .field-con select {
+    padding: 10px;
+  }
+
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #mobile-btn {
+    display: flex;
+    opacity: 1;
+  }
+
+  #header .navbar a {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .btn-primary {
+    font-size: 12px;
+  }
+
+  #header .navbar a {
+    display: none;
+  }
+
+  #mobile-btn {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #mobile-btn {
+    display: none;
+    opacity: 0;
+  }
+
+  #header .navbar a {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .btn-primary {
+    font-size: 14px;
+  }
 }
