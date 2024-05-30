@@ -68,7 +68,7 @@ export default {
         if (response.status === 201) {
           localStorage.setItem("user_id", response.data.user_id);
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("account_type", response.data.account_type);
+          localStorage.setItem("account_type", JSON.stringify(response.data.account_type));
           this.$router.push("/dashboard");
         }
       } catch (error) {

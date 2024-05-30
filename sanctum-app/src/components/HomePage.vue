@@ -46,12 +46,14 @@
                 </button>
                 <button
                   class="btn-primary"
+                  v-if="account_type == 1"
                   @click="toggleEditProduct(product.product_id)"
                 >
                   Edit
                 </button>
                 <button
                   class="btn-primary"
+                  v-if="account_type == 1"
                   @click="toggleDeleteProduct(product.product_id)"
                 >
                   Delete
@@ -93,7 +95,10 @@ export default {
     };
   },
   mounted() {
-    this.account_type = localStorage.getItem("account_type");
+    let accountType = localStorage.getItem("account_type");
+    if (accountType) {
+      this.account_type = parseInt(accountType, 10);
+    }
     this.fetchProducts();
   },
   components: {
