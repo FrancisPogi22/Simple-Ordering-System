@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function products()
     {
-        $products = Product::all();
+        $products = Product::where('quantity', '!=', 0)->get();
 
         return response()->json($products, 200);
     }
@@ -28,7 +28,7 @@ class ProductController extends Controller
                 'user_id' => 'required',
                 'productName' => 'required',
                 'productDescription' => 'required',
-                'productQuantity' => 'required',
+                'productQuantity' => 'required|min:1',
                 'price' => 'required',
             ]
         );
@@ -49,7 +49,7 @@ class ProductController extends Controller
         $request->validate([
             'productName' => 'required',
             'productDescription' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|min:1',
             'price' => 'required',
         ]);
 
