@@ -16,10 +16,10 @@
           <router-link v-if="account_type == 1" to="/userAccounts"
             >Accounts</router-link
           >
-          <router-link v-if="account_type == 2" to="/myCart">Cart</router-link>
+          <!-- <router-link v-if="account_type == 2" to="/myCart">Cart</router-link>
           <router-link v-if="account_type == 2" to="/myOrder"
             >Orders</router-link
-          >
+          > -->
           <router-link v-if="isAuthenticate" to="/logout">Logout</router-link>
         </ul>
       </div>
